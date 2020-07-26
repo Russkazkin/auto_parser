@@ -17,6 +17,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlag($value)
  * @mixin \Eloquent
+ * @property string $slug
+ * @property string $node_name
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereNodeName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
  */
 class Category extends Model
 {
