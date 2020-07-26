@@ -11,6 +11,11 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('categories')->insert([
+            ['name' => 'Легковые автомобили', 'slug' => 'cars'],
+            ['name' => 'Грузовые и автобусы', 'slug' => 'trucks'],
+            ['name' => 'Коммерческий транспорт', 'slug' => 'commercial'],
+            ['name' => 'Мотоциклы', 'slug' => 'motorcycles'],
+        ]);
     }
 }
