@@ -17,7 +17,7 @@ class CreateManufacturersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('uri');
-            $table->foreignId('id')->constrained('categories');
+            $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });
     }
