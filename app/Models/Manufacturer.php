@@ -23,8 +23,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer whereUri($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Category $category
  */
 class Manufacturer extends Model
 {
     protected $fillable = ['name', 'uri', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -21,8 +21,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $node_name
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereNodeName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Manufacturer[] $manufactorers
+ * @property-read int|null $manufactorers_count
  */
 class Category extends Model
 {
-    //
+    public function manufactorers()
+    {
+        return $this->hasMany(Manufacturer::class);
+    }
 }

@@ -21,7 +21,7 @@ class ManufacturersResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'category' => '',
+            'category' =>$this->category->name,
         ];
 
     }
