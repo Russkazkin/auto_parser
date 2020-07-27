@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CarsResource;
+use App\Models\Car;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
@@ -43,11 +45,12 @@ class ManufacturerController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Manufacturer  $manufacturer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function show(Manufacturer $manufacturer)
     {
-        //
+        $cars = Car::where('manufacturer_id', $manufacturer->id)->get();
+        return CarsResource::collection($cars);
     }
 
     /**
