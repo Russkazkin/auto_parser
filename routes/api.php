@@ -23,4 +23,5 @@ Route::group([
     'as' => 'api.'
 ], function (){
     Route::resource('category', 'CategoryController')->only(['index', 'show']);
+    Route::resource('manufacturer', 'ManufacturerController')->only(['show']);
 });
