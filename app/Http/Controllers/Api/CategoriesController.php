@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoriesResource;
+use App\Http\Resources\ManufacturersResource;
 use App\Models\Category;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -43,12 +45,13 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        $manufacturers = Manufacturer::where('category_id', $category->id)->get();
+        return ManufacturersResource::collection($manufacturers);
     }
 
     /**

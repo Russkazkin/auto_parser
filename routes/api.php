@@ -22,5 +22,5 @@ Route::group([
     'namespace' => 'Api',
     'as' => 'api.'
 ], function (){
-    Route::resource('category', 'CategoriesController')->only(['index']);
+    Route::resource('category', 'CategoriesController')->only(['index', 'show']);
 });
