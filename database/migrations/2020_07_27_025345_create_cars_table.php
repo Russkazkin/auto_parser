@@ -19,6 +19,7 @@ class CreateCarsTable extends Migration
             $table->string('years');
             $table->string('uri');
             $table->foreignId('manufacturer_id')->constrained('manufacturers');
+            $table->timestamps();
         });
     }
 
