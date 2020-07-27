@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoriesIndexResource extends JsonResource
+class CategoriesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +15,12 @@ class CategoriesIndexResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        /**
+         * @var $this Category
+         */
+        return [
+            'id' => $this->id,
+            'name' => $this->name
+        ];
     }
 }
