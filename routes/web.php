@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('parser', [ParserController::class, 'index'])->name('parse.index');
+Route::get('parser/cars', [ParserController::class, 'cars'])->name('parse.cars');

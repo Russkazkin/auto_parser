@@ -25,4 +25,11 @@ class ParserController extends Controller
 
         return view('parser.index');
     }
+
+    public function cars()
+    {
+
+
+        return view('parser.cars');
+    }
 }
