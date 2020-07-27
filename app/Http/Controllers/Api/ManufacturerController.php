@@ -3,22 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CategoriesResource;
-use App\Http\Resources\ManufacturersResource;
-use App\Models\Category;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class ManufacturerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return CategoriesResource::collection(Category::all());
+        //
     }
 
     /**
@@ -45,22 +42,21 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Category $category
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param  \App\Models\Manufacturer  $manufacturer
+     * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Manufacturer $manufacturer)
     {
-        $manufacturers = Manufacturer::where('category_id', $category->id)->get();
-        return ManufacturersResource::collection($manufacturers);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Manufacturer $manufacturer)
     {
         //
     }
@@ -69,10 +65,10 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Manufacturer $manufacturer)
     {
         //
     }
@@ -80,10 +76,10 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Manufacturer $manufacturer)
     {
         //
     }

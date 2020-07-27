@@ -23,10 +23,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Manufacturer[] $manufactorers
  * @property-read int|null $manufactorers_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Manufacturer[] $manufacturers
+ * @property-read int|null $manufacturers_count
  */
 class Category extends Model
 {
-    public function manufactorers()
+    public function manufacturers()
     {
         return $this->hasMany(Manufacturer::class);
     }
