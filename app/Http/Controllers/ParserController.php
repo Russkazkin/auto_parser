@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Category;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 use Symfony\Component\DomCrawler\Crawler;
@@ -11,19 +12,21 @@ class ParserController extends Controller
 {
     public function index()
     {
-        $link = 'https://exist.ru/Catalog/Global/';
-        $html = file_get_contents($link);
+        $categories = Category::all();
+        foreach ($categories as $category) {
+            $link = 'https://exist.ru/Catalog/Global/';
+            $html = file_get_contents($link);
 
-        $crawler = new Crawler(null, $link);
-        $crawler->addHtmlContent($html);
-        $crawler->filter('#bmVendorTypesC3 > .catalog-content-header > .top-r > .catalog-column > ul > li > a')->each(function ($node){
-            Manufacturer::create([
-                'name' => $node->text(),
-                'uri' => $node->attr('href'),
-                'category_id' => 4,
-            ]);
-        });
-
+            $crawler = new Crawler(null, $link);
+            $crawler->addHtmlContent($html);
+            $crawler->filter($category->node_name . ' > .catalog-content-header > .top-r > .catalog-column > ul > li > a')->each(function ($node) use ($category){
+                Manufacturer::create([
+                    'name' => $node->text(),
+                    'uri' => $node->attr('href'),
+                    'category_id' => $category->id,
+                ]);
+            });
+        }
         return view('parser.index');
     }
 
