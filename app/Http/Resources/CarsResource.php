@@ -22,7 +22,7 @@ class CarsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'years' => $this->years,
-            'manufacturer' => '',
+            'manufacturer' => $this->manufacturer->name,
         ];
     }
 }

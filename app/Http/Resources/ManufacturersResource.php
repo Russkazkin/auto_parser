@@ -23,6 +23,5 @@ class ManufacturersResource extends JsonResource
             'name' => $this->name,
             'category' =>$this->category->name,
         ];
-
     }
 }

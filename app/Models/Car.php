@@ -25,8 +25,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Car whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Car whereUpdatedAt($value)
+ * @property-read \App\Models\Manufacturer $manufacturer
  */
 class Car extends Model
 {
     protected $fillable = ['name', 'years', 'uri', 'manufacturer_id'];
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
+    }
 }

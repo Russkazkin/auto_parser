@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer whereUri($value)
  * @mixin \Eloquent
  * @property-read \App\Models\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Car[] $cars
+ * @property-read int|null $cars_count
  */
 class Manufacturer extends Model
 {
@@ -32,5 +34,10 @@ class Manufacturer extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
     }
 }
