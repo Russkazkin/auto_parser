@@ -12,6 +12,11 @@ class ParserController extends Controller
 {
     public function index()
     {
+        return view('parser.index');
+    }
+
+    public function manufacturers()
+    {
         $categories = Category::all();
         foreach ($categories as $category) {
             $link = 'https://exist.ru/Catalog/Global/';
@@ -27,7 +32,7 @@ class ParserController extends Controller
                 ]);
             });
         }
-        return view('parser.index');
+        return view('parser.manufacturers');
     }
 
     public function cars()
