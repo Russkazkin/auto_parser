@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Manufacturer;
+use Eloquent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ParserController extends Controller
@@ -17,7 +19,10 @@ class ParserController extends Controller
 
     public function manufacturers()
     {
+        Eloquent::unguard();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Manufacturer::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $categories = Category::all();
         foreach ($categories as $category) {
             $link = 'https://exist.ru/Catalog/Global/';
@@ -38,7 +43,11 @@ class ParserController extends Controller
 
     public function cars()
     {
+        Eloquent::unguard();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Car::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
         set_time_limit(3600);
         $manufacturers = Manufacturer::all();
         foreach ($manufacturers as $manufacturer)
