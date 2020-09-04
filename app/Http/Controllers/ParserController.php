@@ -17,6 +17,7 @@ class ParserController extends Controller
 
     public function manufacturers()
     {
+        Manufacturer::truncate();
         $categories = Category::all();
         foreach ($categories as $category) {
             $link = 'https://exist.ru/Catalog/Global/';
@@ -37,6 +38,7 @@ class ParserController extends Controller
 
     public function cars()
     {
+        Car::truncate();
         set_time_limit(3600);
         $manufacturers = Manufacturer::all();
         foreach ($manufacturers as $manufacturer)
