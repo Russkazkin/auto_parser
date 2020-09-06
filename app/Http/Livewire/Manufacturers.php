@@ -18,6 +18,7 @@ class Manufacturers extends Component
         Manufacturer::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $categories = Category::all();
+        $manufacturer = 0;
         foreach ($categories as $category) {
             $link = 'https://exist.ru/Catalog/Global/';
             $html = file_get_contents($link);
@@ -31,6 +32,9 @@ class Manufacturers extends Component
                     'category_id' => $category->id,
                 ]);
             });
+            $manufacturer++;
+            session(['manufacturer' => $manufacturer]);
+            session(['category' => $category->name]);
         }
     }
 

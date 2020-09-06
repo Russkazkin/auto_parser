@@ -14,6 +14,8 @@ class ParserController extends Controller
 {
     public function index()
     {
+        session(['manufacturer' => '']);
+        session(['category' => '']);
         return view('parser.index');
     }
 

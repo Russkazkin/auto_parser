@@ -1,10 +1,7 @@
 <div>
     <h1>livewire component</h1>
-    <div wire:loading>
-        Processing Payment...
-    </div>
-    <div wire:loading.remove style="display: none">
-        Hide Me While Loading...
-    </div>
+    {{--<div wire:loading>
+        Запрос выполняется...
+    </div>--}}
     <button class="btn btn-success" wire:click="getManufacturers">Get Manufacturers</button>
 </div>
