@@ -18,9 +18,9 @@ class Cars extends Component
         Car::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        set_time_limit(3600);
+        set_time_limit(0);
         $manufacturers = Manufacturer::all();
-        $car = 0;
+
         foreach ($manufacturers as $manufacturer)
         {
             $link = 'https://exist.ru' . $manufacturer->uri . '/?all=1';
@@ -41,8 +41,6 @@ class Cars extends Component
                     'manufacturer_id' => $manufacturer->id,
                 ]);
             });
-            $car++;
-            session(['car' => $car]);
         }
     }
 

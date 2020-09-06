@@ -14,10 +14,7 @@ class ParserController extends Controller
 {
     public function index()
     {
-        session(['manufacturer' => '']);
-        session(['category' => '']);
-        session(['car' => '']);
-        return view('parser.index');
+        return view('parser.index')->with('count', Car::count() ?: 9612);
     }
 
     public function manufacturers()
