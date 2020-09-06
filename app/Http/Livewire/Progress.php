@@ -6,17 +6,15 @@ use Livewire\Component;
 
 class Progress extends Component
 {
-    public $manufacturer;
-    public $category;
+    public $car;
 
     public function getProgress()
     {
-        $this->manufacturer = session('manufacturer');
-        $this->category = session('category');
+        $this->car = session('car');
     }
 
     public function render()
     {
-        return view('livewire.progress')->with(['manufacturer' => $this->manufacturer, 'category' => $this->category]);
+        return view('livewire.progress')->with(['car' => $this->car]);
     }
 }

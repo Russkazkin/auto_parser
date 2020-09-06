@@ -1,50 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Livewire;
 
 use App\Models\Car;
-use App\Models\Category;
 use App\Models\Manufacturer;
 use Eloquent;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ParserController extends Controller
+class Cars extends Component
 {
-    public function index()
-    {
-        session(['manufacturer' => '']);
-        session(['category' => '']);
-        session(['car' => '']);
-        return view('parser.index');
-    }
-
-    public function manufacturers()
-    {
-        Eloquent::unguard();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Manufacturer::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        $categories = Category::all();
-        foreach ($categories as $category) {
-            $link = 'https://exist.ru/Catalog/Global/';
-            $html = file_get_contents($link);
-
-            $crawler = new Crawler(null, $link);
-            $crawler->addHtmlContent($html);
-            $crawler->filter($category->node_name . ' > .catalog-content-header > .top-r > .catalog-column > ul > li > a')->each(function ($node) use ($category){
-                Manufacturer::create([
-                    'name' => $node->text(),
-                    'uri' => $node->attr('href'),
-                    'category_id' => $category->id,
-                ]);
-            });
-        }
-        return view('parser.manufacturers');
-    }
-
-    public function cars()
+    public function getCars()
     {
         Eloquent::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -53,6 +20,7 @@ class ParserController extends Controller
 
         set_time_limit(3600);
         $manufacturers = Manufacturer::all();
+        $car = 0;
         foreach ($manufacturers as $manufacturer)
         {
             $link = 'https://exist.ru' . $manufacturer->uri . '/?all=1';
@@ -73,7 +41,13 @@ class ParserController extends Controller
                     'manufacturer_id' => $manufacturer->id,
                 ]);
             });
+            $car++;
+            session(['car' => $car]);
         }
-        return view('parser.cars');
+    }
+
+    public function render()
+    {
+        return view('livewire.cars');
     }
 }
