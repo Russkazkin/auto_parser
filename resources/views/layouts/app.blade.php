@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <livewire:styles />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -76,5 +77,8 @@
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    <livewire:scripts />
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
