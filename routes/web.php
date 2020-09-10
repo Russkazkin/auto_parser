@@ -14,18 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes([
-    'register' => false,
-    'verify' => true,
-    'reset' => false
-]);
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::group([
-    'middleware' => ['auth', 'verified'],
+    'middleware' => [''],
 ], function (){
     Route::get('parser/', [ParserController::class, 'index'])->name('parse.index');
     Route::get('parser/manufacturers', [ParserController::class, 'manufacturers'])->name('parse.categories');
