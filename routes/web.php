@@ -20,11 +20,9 @@ Route::get('/', function () {
 });
 
 Route::group([
-    'middleware' => [''],
+    'middleware' => [],
 ], function (){
     Route::get('parser/', [ParserController::class, 'index'])->name('parse.index');
     Route::get('parser/manufacturers', [ParserController::class, 'manufacturers'])->name('parse.categories');
     Route::get('parser/cars', [ParserController::class, 'cars'])->name('parse.cars');
 });
-
-Route::get('/home', 'HomeController@index')->name('home');
