@@ -1,7 +1,6 @@
 <div>
     <h1>Cars parsing</h1>
-    {{--<div wire:loading>
-        Запрос выполняется...
-    </div>--}}
-    <button class="btn btn-success" wire:click="getCars">Get Cars</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" wire:click="getCars">
+        Get Cars
+    </button>
 </div>
