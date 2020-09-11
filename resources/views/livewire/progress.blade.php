@@ -1,3 +1,6 @@
+@php
+$count = $count ?: 9000;
+@endphp
 <div>
     <h2>Progress</h2>
     <div wire:poll.750ms="getProgress">

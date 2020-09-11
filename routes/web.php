@@ -26,3 +26,7 @@ Route::group([
     Route::get('parser/manufacturers', [ParserController::class, 'manufacturers'])->name('parse.categories');
     Route::get('parser/cars', [ParserController::class, 'cars'])->name('parse.cars');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia\Inertia::render('Dashboard');
+})->name('dashboard');
